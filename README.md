@@ -1,2 +1,2 @@
-# spark
-A neuarl network application written in Erlang
+# Spark
+A neural network application written in Erlang

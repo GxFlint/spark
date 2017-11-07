@@ -15,7 +15,7 @@ create(WeightMatrix, BiasVector, ActivationFunction, NextLayer) ->
 	gen_server:start_link(?MODULE, [WeightMatrix, BiasVector, ActivationFunction, NextLayer], []).
 
 push_to(Layer, InputVector) ->
-	gen_server:cast(Layer, {push, InputVector}).
+  gen_server:cast(Layer, {push, InputVector}).
 
 %% ====================================================================
 %% Behavioural functions
