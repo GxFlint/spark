@@ -4,8 +4,10 @@
 -export([multiply/2, collapse/1]).
 
 multiply(InputVector, WeightMatrix) ->
-  [vector:multiply(InputVector, WeightVector) || WeightVector <- WeightMatrix].
+  WeightedInputMatrix = [vector:multiply(InputVector, WeightVector) || WeightVector <- WeightMatrix],
+  WeightedInputMatrix.
 
 collapse(WeightedInputMatrix) ->
-  [vector:collapse(WeightedInputVector) || WeightedInputVector <- WeightedInputMatrix].
+  WeightedInputVector = [vector:collapse(WeightedInputVector) || WeightedInputVector <- WeightedInputMatrix],
+  WeightedInputVector.
 

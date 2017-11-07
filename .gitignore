@@ -13,7 +13,9 @@ erl_crash.dump
 .rebar
 logs
 _build
+default
 .idea
 *.iml
 rebar3.crashdump
 apps/niffy/
+default/lib/spark/src/neuron_layer.erl
