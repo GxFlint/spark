@@ -4,18 +4,14 @@
 -export([collapse/1, sum/2, multiply/2, apply/2]).
 
 collapse(WeightedInputVector) ->
-  CollapsedWeightedInputVector = lists:foldl(fun(X, Sum) -> X + Sum end, 0, WeightedInputVector),
-  CollapsedWeightedInputVector.
+  lists:foldl(fun(X, Sum) -> X + Sum end, 0, WeightedInputVector).
 
 sum(WeightedInputVector, BiasVector) ->
-  BiasedWeightedInputVector = lists:zipwith(fun (X, Y) -> X + Y end, WeightedInputVector, BiasVector),
-  BiasedWeightedInputVector.
+  lists:zipwith(fun (X, Y) -> X + Y end, WeightedInputVector, BiasVector).
 
 multiply(InputVector, WeightVector) ->
-  WeightedInputVector = lists:zipwith(fun (X, Y) -> X * Y end, InputVector, WeightVector),
-  WeightedInputVector.
+  lists:zipwith(fun (X, Y) -> X * Y end, InputVector, WeightVector).
 
 apply(ActivationFunction, BiasedWeightedInputVector) -> %% γⁿ = φ(wbⁿ)
-  NeuronOutputVector = lists:map(ActivationFunction, BiasedWeightedInputVector),
-  NeuronOutputVector.
+  lists:map(ActivationFunction, BiasedWeightedInputVector).
 

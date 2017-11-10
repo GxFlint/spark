@@ -8,8 +8,8 @@
 %% ====================================================================
 %% API functions
 %% ====================================================================
--export([create/4, test/0]).
--export([push_to/2, train/3, get_state/1]).
+-export([create/4, push_to/2, train/3, get_state/1]).
+-export([test/0]).
 
 create(WeightMatrix, BiasVector, ActivationFunction, NextLayer) ->
   gen_server:start_link(?MODULE, [WeightMatrix, BiasVector, ActivationFunction, NextLayer], []).
@@ -41,17 +41,18 @@ init([WeightMatrix, BiasVector, ActivationFunction, NextLayer]) ->
   {ok, State}.
 
 handle_call(get_state, _From, State) ->
-  {reply, State, State};
+  Reply = State,
+  {reply, Reply, State};
 
 handle_call(_Request, _From, State) ->
   Reply = not_implemented,
   {reply, Reply, State}.
 
 handle_cast({push, InputVector}, State) ->
-  WeightMatrix			 = State#state.weight_matrix,
-  BiasVector				 = State#state.bias_vector,
+  WeightMatrix       = State#state.weight_matrix,
+  BiasVector         = State#state.bias_vector,
   ActivationFunction = State#state.activation_function,
-  NextLayer					 = State#state.next_layer,
+  NextLayer          = State#state.next_layer,
 
   OutputVector = excite_neurons(InputVector, WeightMatrix, BiasVector, ActivationFunction),
 
