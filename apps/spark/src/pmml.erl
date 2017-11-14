@@ -13,13 +13,12 @@ open(FileName) ->
     {Xml, _} ->
       'PMML' = Xml#xmlElement.name,
       case xmerl_lib:find_attribute(version, Xml#xmlElement.attributes) of
+        false -> error({attribute_not_found, version});
         {value, PMMLVersion} ->
           PMMLContent = Xml#xmlElement.content,
-          DD = getElement('DataDictionary', PMMLContent),
           NN = getElement('NeuralNetwork',  PMMLContent),
           
-          Tags = PMMLContent#xmlText.value;
-        false -> error({attribute_not_found, version})
+          Tags = PMMLContent#xmlText.value
       end
   end.
 

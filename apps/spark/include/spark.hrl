@@ -6,3 +6,7 @@
 
 -record(output_neuron, {}).
 -record(output_layer, {}).
+
+-record(nn_kernel, {supervisor::pid(),
+                    input_layer::pid(),
+                    output_output::pid()}).
