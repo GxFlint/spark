@@ -8,6 +8,7 @@
 -export([logistic/1, sigmoid/1]).
 -export([rectifier/1]).
 -export([tangent/1]).
+-export([softmax/1]).
 -export([radial/4]).
 
 % f(x) = x -> (-∞, ∞)
@@ -31,6 +32,9 @@ sigmoid(X) ->
 % f(x) = e^2x - 1 / e^2x + 1 -> (-1, 1)
 tangent(X) ->
   (math:exp(2 * X) - 1) / (math:exp(2 * X) + 1).
+
+softmax(X) ->
+  X.
 
 % f(x, a, b, c) = ? && TODO: Implement Radial Basis Function
 radial(X, A, B, C) ->
